@@ -10,7 +10,7 @@ import traceback
 import warnings
 from collections import defaultdict
 from itertools import chain
-
+from pymongo.uri_parser import parse_uri
 import gridfs
 from bson import ObjectId
 from monty.os.path import zpath
@@ -197,9 +197,14 @@ class LaunchPad(FWSerializable):
 
         # get connection
         if uri_mode:
-            self.connection = MongoClient(host, **self.mongoclient_kwargs)
+            print("Let's look at object\n")
+            print(dir(self))
+            if self.name is None:
+                parsed_uri = parse_uri(host)
+                self.name = parsed_uri["database"]
             if self.name is None:
                 raise ValueError("Must specify a database name when using a MongoDB URI string.")
+            self.connection = MongoClient(host, **self.mongoclient_kwargs)
             self.db = self.connection[self.name]
         else:
             self.connection = MongoClient(
