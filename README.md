@@ -1,3 +1,7 @@
+
+## Purpose of this fork
+This is Arun's copy of the Fireworks repo. I use this to make modifications to the source code when something is not working, or if to make it more compatible for my use case. I will try to keep this repo up to date with the latest changes based on dependency changes and main repo changes, but I cannot guarantee that. 😉
+
 # <img alt="FireWorks" src="docs_rst/_static/FireWorks_logo.png" width="250">
 
 FireWorks stores, executes, and manages calculation workflows.
