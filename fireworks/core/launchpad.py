@@ -197,8 +197,8 @@ class LaunchPad(FWSerializable):
 
         # get connection
         if uri_mode:
-            print("Let's look at object\n")
-            print(dir(self))
+            # print("Let's look at object\n")
+            # print(dir(self))
             if self.name is None:
                 parsed_uri = parse_uri(host)
                 self.name = parsed_uri["database"]
