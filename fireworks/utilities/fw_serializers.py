@@ -254,7 +254,9 @@ class FWSerializable(metaclass=abc.ABCMeta):
         if f_format == "json":
             dct = json.loads(f_str)
         elif f_format == "yaml":
-            dct = yaml.safe_load(f_str)
+            yml = yaml.YAML(typ="safe", pure=True)
+            dct = yml.load(f_str)
+            # dct = yaml.safe_load(f_str)
         else:
             raise ValueError(f"Unsupported format {f_format}")
         if JSON_SCHEMA_VALIDATE and cls.__name__ in JSON_SCHEMA_VALIDATE_LIST:
